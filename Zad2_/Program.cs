@@ -20,7 +20,7 @@ namespace Zad2_
 
 
            // SqlDataAdapter adapter = new SqlDataAdapter(commandString, connectionString);
-            //adapter.MissingSchemaAction = MissingSchemaAction.AddWithKey;
+            //adapter.MissingSchemaAction = MissingSchemaAction.AddWithKey;/80890890
             //adapter.Fill(simpleShopDb);
             DataTable Employees = simpleShopDb.Tables[0];
             DataTable orders = simpleShopDb.Tables[1];
