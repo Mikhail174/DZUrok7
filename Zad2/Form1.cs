@@ -44,7 +44,7 @@ namespace Zad2
             this.dataGridView1.Columns["PriorSalary"].Visible = false;
             this.dataGridView1.Columns["HireDate"].Visible = false;
             this.dataGridView1.Columns["TerminationDate"].Visible = false;
-            this.dataGridView1.Columns["ManagerEmpID"].Visible = false;
+            this.dataGridView1.Columns["ManagerEmpID"].Visible = false; ////
 
 
 
