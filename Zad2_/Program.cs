@@ -12,41 +12,42 @@ namespace Zad2_
     {
         static void Main(string[] args)
         {
-            // string connectionString = @"Data Source=WKS456\SQLEXPRESS;Initial Catalog=ShopDB;Integrated Security=True";
-            //string commandString = "SELECT EmployeeID FROM Employees; SELECT * FROM Orders;";
-            DataSet simpleShopDb = new DataSet();
-            simpleShopDb.ReadXmlSchema(@"E:\ADO.NET\DATA\ShopDbSchema.xml");
-            simpleShopDb.ReadXml(@"E:\ADO.NET\DATA\ShopDBData.xml");
+            //string connectionString = @"Data Source=WKS456\SQLEXPRESS;Initial Catalog=ShopDB;Integrated Security=True";
+            //string commandString = "SELECT * FROM Employees; SELECT * FROM Orders;";
+            //DataSet simpleShopDb = new DataSet();
+            //simpleShopDb.ReadXmlSchema(@"E:\ADO.NET\DATA\ShopDbSchema.xml");
+            //simpleShopDb.ReadXml(@"E:\ADO.NET\DATA\ShopDBData.xml");
 
 
-           // SqlDataAdapter adapter = new SqlDataAdapter(commandString, connectionString);
-            //adapter.MissingSchemaAction = MissingSchemaAction.AddWithKey;/80890890
-            //adapter.Fill(simpleShopDb);
-            DataTable Employees = simpleShopDb.Tables[0];
-            DataTable orders = simpleShopDb.Tables[1];
-            simpleShopDb.Relations.Add("Employees_Orders", Employees.Columns["EmployeeID"], orders.Columns["EmployeeID"]);
-            Employees.Columns.Add("CountSale", typeof(double), "Count(Child(Employees_Orders).EmployeeID)");
+            //SqlDataAdapter adapter = new SqlDataAdapter(commandString, connectionString);
+            //adapter.MissingSchemaAction = MissingSchemaAction.AddWithKey;
+           // adapter.Fill(simpleShopDb);
+           // DataTable Employees = simpleShopDb.Tables[0];
+           // DataTable orders = simpleShopDb.Tables[1];
+           // simpleShopDb.Relations.Add("Employees_Orders", Employees.Columns["EmployeeID"], orders.Columns["EmployeeID"]);
+           // Employees.Columns.Add("CountSale", typeof(double), "Count(Child(Employees_Orders).EmployeeID)");
 
-            foreach (DataRow EmployeesRow in Employees.Rows)
-            {
-                foreach (DataColumn EmployeesColumn in Employees.Columns)
-                    Console.WriteLine("{0}: {1}", EmployeesColumn.ColumnName, EmployeesRow[EmployeesColumn]);
+            //foreach (DataRow EmployeesRow in Employees.Rows)
+            //{
+            //    foreach (DataColumn EmployeesColumn in Employees.Columns)
+            //        Console.WriteLine("{0}: {1}", EmployeesColumn.ColumnName, EmployeesRow[EmployeesColumn]);
 
-                Console.WriteLine();
-            }
+            //    Console.WriteLine();
+            //}
 
 
-            ShopDB strongedShopDB = new ShopDB();
-            strongedShopDB.Customers.Merge(simpleShopDb.Tables["Employees"]);
+            //ShopDB strongedShopDB = new ShopDB();
+            //simpleShopDb.AcceptChanges();
+            //strongedShopDB.Customers.Merge(simpleShopDb.Tables[0]);
             
 
-            foreach (DataRow row in strongedShopDB.Employees.Rows)
-            {
-                foreach (DataColumn column in strongedShopDB.Employees.Columns)
-                    Console.WriteLine("{0}: {1}", column.ColumnName, row[column]);
+            //foreach (DataRow row in strongedShopDB.Employees.Rows)
+            //{
+            //    foreach (DataColumn column in strongedShopDB.Employees.Columns)
+            //        Console.WriteLine("{0}: {1}", column.ColumnName, row[column]);
 
-                Console.WriteLine();
-            }
+            //    Console.WriteLine();
+            //}
 
             //var employeesTableAdapter = new ShopDBTableAdapters.EmployeesTableAdapter();
             //employeesTableAdapter.Fill(strongedShopDB.Employees);
