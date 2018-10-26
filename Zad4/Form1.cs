@@ -20,7 +20,7 @@ namespace Zad4
             var ordersTableAdapter = new ShopDBTableAdapters.OrdersTableAdapter();
             ordersTableAdapter.Fill(shopDB.Orders);
 
-            var employeesTableAdapter = new ShopDBTableAdapters.EmployeesTableAdapter();
+            var employeesTableAdapter = new ShopDBTableAdapters.EmployeesTableAdapter(); //
             employeesTableAdapter.Fill(shopDB.Employees);
 
             shopDB.Orders.Columns.Add("SurnameEmployee", typeof(String));
