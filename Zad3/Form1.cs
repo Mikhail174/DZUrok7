@@ -30,6 +30,9 @@ namespace Zad3
             ShopDB.CustomersDataTable customers = customersTableAdapter.GetData();
             ShopDB.OrdersDataTable orders = ordersTableAdapter.GetData();
 
+
+
+
             customers.Columns.Add("CountSale", typeof(int));
             foreach (DataRow customerRow in customers.Rows)
             {
