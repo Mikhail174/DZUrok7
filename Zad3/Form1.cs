@@ -33,21 +33,34 @@ namespace Zad3
 
 
 
-            customers.Columns.Add("CountSale", typeof(int));
-            foreach (DataRow customerRow in customers.Rows)
-            {
-                customerRow["CountSale"] = orders.Count(o => o.CustomerNo == (int)customerRow["CustomerNo"]);
 
-            }
-            dataGridView1.DataSource = customers;
-            dataGridView1.Columns[0].Visible = false;
-            dataGridView1.Columns[1].Visible = false;
-            dataGridView1.Columns[2].Visible = false;
-            dataGridView1.Columns[3].Visible = false;
-            dataGridView1.Columns[4].Visible = false;
-            dataGridView1.Columns[5].Visible = false;
-            dataGridView1.Columns[7].Visible = false;
-            dataGridView1.Columns[8].Visible = false;
+
+            var query = from c in customers
+                         join o in orders on c.CustomerNo equals o.CustomerNo
+                         group o by c into g
+                         select new  { City=g.Key.City,
+                                       Countsale = g.Count(o=>o.CustomerNo==g.Key.CustomerNo)
+                                     };
+                         dataGridView1.DataSource = query.ToList();
+
+
+
+
+
+
+
+
+
+
+
+            //dataGridView1.Columns[0].Visible = false;
+            //dataGridView1.Columns[1].Visible = false;
+            //dataGridView1.Columns[2].Visible = false;
+            //dataGridView1.Columns[3].Visible = false;
+            //dataGridView1.Columns[4].Visible = false;
+            //dataGridView1.Columns[5].Visible = false;
+            //dataGridView1.Columns[7].Visible = false;
+            //dataGridView1.Columns[8].Visible = false;
 
 
 
